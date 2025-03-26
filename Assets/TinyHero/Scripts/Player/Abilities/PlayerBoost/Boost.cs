@@ -11,6 +11,7 @@ namespace Player.Abilities.PlayerBoost
         [SerializeField] private ReloadedButton _hitButton;
         [SerializeField] private BoostPercent _boostPercent;
         [SerializeField] private HitDamage _hitDamage;
+        [SerializeField] private Mana _mana;
 
         private void OnEnable()
         {
@@ -24,7 +25,11 @@ namespace Player.Abilities.PlayerBoost
 
         private void Perform()
         {
-            StartCoroutine(RunRoutine());
+            if(_mana.CurrentValue >= _boostPercent.ManaCost)
+            {
+                _mana.Reduce(_boostPercent.ManaCost);
+                StartCoroutine(RunRoutine());
+            }
         }
 
         private IEnumerator RunRoutine()

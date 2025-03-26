@@ -10,6 +10,7 @@ namespace Player.Abilities.PlayerAttack
         [SerializeField] private ReloadedButton _hitButton;
         [SerializeField] private HitDamage _hitDamage;
         [SerializeField] private EnemySeeker _enemySeeker;
+        [SerializeField] private Mana _mana;
 
         private void OnEnable()
         {
@@ -23,10 +24,13 @@ namespace Player.Abilities.PlayerAttack
 
         private void Perform()
         {
-            if(_enemySeeker.CurrentEnemyHealth != null && _enemySeeker.CurrentEnemyHealth.CurrentValue > 0)
+            if(_enemySeeker.CurrentEnemy != null &&
+                _enemySeeker.CurrentEnemy.Health.CurrentValue > 0 &&
+                _mana.CurrentValue >= _hitDamage.ManaCost)
             {
+                _mana.Reduce(_hitDamage.ManaCost);
                 _hitButton.Reload();
-                _enemySeeker.CurrentEnemyHealth.Reduce(_hitDamage.Value);
+                _enemySeeker.CurrentEnemy.Health.Reduce(_hitDamage.Value);
             }
         }
     }

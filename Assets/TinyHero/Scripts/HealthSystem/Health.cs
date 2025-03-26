@@ -2,17 +2,14 @@ using UI;
 using UI.Bars;
 using UnityEngine;
 
-namespace Enemy
+namespace HealthSystem
 {
-    public class EnemyHealth : MonoBehaviour
+    public class Health : MonoBehaviour
     {
         [SerializeField] private float _maxValue;
         [SerializeField] private View _healthView;
-        [SerializeField] private Highlight _highlight;
 
         public float CurrentValue { get; private set; }
-
-        public Highlight Highlight => _highlight;
 
         private void Awake()
         {

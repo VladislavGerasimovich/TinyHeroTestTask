@@ -1,4 +1,5 @@
-using Enemy;
+using Enemies;
+using HealthSystem;
 using UnityEngine;
 
 namespace Player.PlayerInput
@@ -7,7 +8,7 @@ namespace Player.PlayerInput
     {
         [SerializeField] private LayerMask _enemyLayerMask;
 
-        public EnemyHealth CurrentEnemyHealth { get; private set; }
+        public Enemy CurrentEnemy { get; private set; }
 
         private void Update()
         {
@@ -18,13 +19,13 @@ namespace Player.PlayerInput
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    if(CurrentEnemyHealth != null)
+                    if(CurrentEnemy != null)
                     {
-                        CurrentEnemyHealth.Highlight.Switch(false);
+                        CurrentEnemy.Highlight.Switch(false);
                     }
 
-                    CurrentEnemyHealth = hit.collider.GetComponent<EnemyHealth>();
-                    CurrentEnemyHealth.Highlight.Switch(true);
+                    CurrentEnemy = hit.collider.GetComponent<Enemy>();
+                    CurrentEnemy.Highlight.Switch(true);
                 }
             }
         }
