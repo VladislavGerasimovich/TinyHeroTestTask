@@ -18,7 +18,13 @@ namespace Player.PlayerInput
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+                    if(CurrentEnemyHealth != null)
+                    {
+                        CurrentEnemyHealth.Highlight.Switch(false);
+                    }
+
                     CurrentEnemyHealth = hit.collider.GetComponent<EnemyHealth>();
+                    CurrentEnemyHealth.Highlight.Switch(true);
                 }
             }
         }

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Player.PlayerStats
+namespace UI.PlayerButtons
 {
-    public class HitDamage : MonoBehaviour
+    public class Reload : MonoBehaviour
     {
         [SerializeField] private float _startValue;
 
@@ -13,13 +13,15 @@ namespace Player.PlayerStats
 
         private void Awake()
         {
+            _percentMultiplier = 100;
             _currentValue = _startValue;
-            _percentMultiplier = 100f;
         }
 
         public void IncreaseByPercent(float value)
         {
+            Debug.Log(Value + " до");
             _currentValue += _currentValue * value / _percentMultiplier;
+            Debug.Log(Value + " после");
         }
 
         public void ResetToOriginalValue()

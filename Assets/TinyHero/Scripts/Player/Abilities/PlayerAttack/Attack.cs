@@ -3,11 +3,11 @@ using Player.PlayerStats;
 using UI.PlayerButtons;
 using UnityEngine;
 
-namespace Player.PlayerAttack
+namespace Player.Abilities.PlayerAttack
 {
     public class Attack : MonoBehaviour
     {
-        [SerializeField] private HitButton _hitButton;
+        [SerializeField] private ReloadedButton _hitButton;
         [SerializeField] private HitDamage _hitDamage;
         [SerializeField] private EnemySeeker _enemySeeker;
 
