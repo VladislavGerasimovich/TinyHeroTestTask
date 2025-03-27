@@ -1,5 +1,4 @@
 using Enemies;
-using HealthSystem;
 using UnityEngine;
 
 namespace Player.PlayerInput
@@ -28,6 +27,11 @@ namespace Player.PlayerInput
                     CurrentEnemy.Highlight.Switch(true);
                 }
             }
+        }
+
+        public void ResetCurrentEnemy()
+        {
+            CurrentEnemy = null;
         }
     }
 }

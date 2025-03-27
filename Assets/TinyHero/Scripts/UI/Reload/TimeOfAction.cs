@@ -2,15 +2,12 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace UI.Reload
 {
     [RequireComponent(typeof(Image))]
     public class TimeOfAction : MonoBehaviour
     {
-        [SerializeField] private Button _button;
-
         private Image _image;
-
         private Coroutine _runCoroutine;
 
         private void Awake()
@@ -18,12 +15,12 @@ namespace UI
             _image = GetComponent<Image>();
         }
 
-        public void StartRunCoroutine(float time)
+        public virtual void StartRunCoroutine(float time)
         {
             _runCoroutine = StartCoroutine(Run(time));
         }
 
-        public void StopRunCoroutine()
+        public virtual void StopRunCoroutine()
         {
             StopCoroutine(_runCoroutine);
             _image.fillAmount = 0;
@@ -31,7 +28,6 @@ namespace UI
 
         private IEnumerator Run(float time)
         {
-            _button.interactable = false;
             _image.fillAmount = 0;
             float duration = 0;
 
@@ -43,8 +39,7 @@ namespace UI
                 yield return null;
             }
 
-            _image.fillAmount = 0;
-            _button.interactable = true;
+            StopRunCoroutine();
         }
     }
 }

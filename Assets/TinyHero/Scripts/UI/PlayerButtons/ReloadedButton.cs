@@ -1,4 +1,5 @@
 using System;
+using UI.Reload;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ namespace UI.PlayerButtons
     [RequireComponent(typeof(Reload))]
     public class ReloadedButton : PressButton
     {
-        [SerializeField] private TimeOfAction _timeOfAction;
+        [SerializeField] private ButtonTimeOfAction _timeOfAction;
 
         public Reload ReloadValue;
 

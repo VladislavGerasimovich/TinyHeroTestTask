@@ -10,7 +10,7 @@ namespace Player.Abilities.PlayerBoost
         [SerializeField] private ReloadedButton _boostButton;
         [SerializeField] private ReloadedButton _hitButton;
         [SerializeField] private BoostPercent _boostPercent;
-        [SerializeField] private HitDamage _hitDamage;
+        [SerializeField] private PlayerStats.HitDamage _hitDamage;
         [SerializeField] private Mana _mana;
 
         private void OnEnable()

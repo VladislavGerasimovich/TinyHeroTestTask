@@ -1,5 +1,7 @@
 using Enemies;
 using Game.ObjectPools;
+using HealthSystem;
+using Player.PlayerInput;
 using UnityEngine;
 
 namespace GameSession
@@ -8,21 +10,13 @@ namespace GameSession
     {
         [SerializeField] private EnemyPool _enemyPool;
         [SerializeField] private AttackPoints _attackPoints;
+        [SerializeField] private EnemySeeker _enemySeeker;
+        [SerializeField] private PlayerHealth _playerHealth;
 
         private void Awake()
         {
-            _enemyPool.Initialize();
-
-            for (int i = 0; i < _attackPoints.Count; i++)
-            {
-                Point point = _attackPoints.GetPointByIndex(i);
-                bool isEnemy = _enemyPool.TryGet(out GameObject gameObject);
-
-                if (isEnemy == true) {
-                    gameObject.transform.position = point.transform.position;
-                    gameObject.SetActive(true);
-                }
-            }
+            _enemyPool.Init(_playerHealth);
+            _attackPoints.Init(_enemyPool);
         }
     }
 }

@@ -1,3 +1,5 @@
+using Enemies;
+using HealthSystem;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,8 +8,8 @@ namespace Game.ObjectPools
 {
     public class EnemyPool : MonoBehaviour
     {
-        [SerializeField] protected GameObject Container;
-        [SerializeField] protected int Capacity;
+        [SerializeField] private GameObject _container;
+        [SerializeField] private int _capacity;
         [SerializeField] private GameObject _prefab;
 
         private List<GameObject> _pool;
@@ -18,14 +20,16 @@ namespace Game.ObjectPools
             return result != null;
         }
 
-        public void Initialize()
+        public void Init(PlayerHealth playerHealth)
         {
             _pool = new List<GameObject>();
 
-            for (int i = 0; i < Capacity; i++)
+            for (int i = 0; i < _capacity; i++)
             {
-                GameObject item = Instantiate(_prefab, Container.transform);
+                GameObject item = Instantiate(_prefab, _container.transform);
                 item.SetActive(false);
+                Enemy enemy = item.GetComponent<Enemy>();
+                enemy.EnemyAttack.Init(playerHealth);
                 _pool.Add(item);
             }
         }

@@ -1,17 +1,21 @@
+using System;
 using UnityEngine;
 
 namespace Enemies
 {
     public class Point : MonoBehaviour
     {
+        public event Action Free;
+
         public bool IsBusy { get; private set; }
 
-        public void ProhibitUse()
+        public void AllowUse()
         {
             IsBusy = false;
+            Free?.Invoke();
         }
 
-        public void AllowUse()
+        public void ProhibitUse()
         {
             IsBusy = true;
         }

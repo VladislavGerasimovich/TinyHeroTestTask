@@ -1,4 +1,3 @@
-using UI;
 using UI.Bars;
 using UnityEngine;
 
@@ -6,26 +5,52 @@ namespace HealthSystem
 {
     public class Health : MonoBehaviour
     {
-        [SerializeField] private float _maxValue;
+        [SerializeField] protected float MaxValue;
         [SerializeField] private View _healthView;
 
-        public float CurrentValue { get; private set; }
+        protected float Current;
 
-        private void Awake()
+        public float CurrentValue => Current;
+
+        protected virtual void Awake()
         {
-            CurrentValue = _maxValue;
+            Current = MaxValue;
+        }
+
+        public void RestoreAllHealth()
+        {
+            Current = MaxValue;
+            _healthView.Set(Current, MaxValue);
         }
 
         public void Reduce(float value)
         {
-            CurrentValue -= value;
+            Current -= value;
             
-            if(CurrentValue < 0)
+            if(Current <= 0)
             {
-                CurrentValue = 0;
+                Current = 0;
+                Die();
             }
 
-            _healthView.Set(CurrentValue, _maxValue);
+            _healthView.Set(Current, MaxValue);
+        }
+
+        public virtual void Restore(float value)
+        {
+            Current += value;
+
+            if(Current > MaxValue)
+            {
+                Current = MaxValue;
+            }
+
+            _healthView.Set(Current, MaxValue);
+        }
+
+        protected virtual void Die()
+        {
+            gameObject.SetActive(false);
         }
     }
 }
