@@ -450,6 +450,7 @@ MonoBehaviour:
   _attackPoints: {fileID: 311304873}
   _enemySeeker: {fileID: 1214753787}
   _playerHealth: {fileID: 1841979307}
+  _animatorData: {fileID: 700347469}
 --- !u!4 &257448266
 Transform:
   m_ObjectHideFlags: 0
@@ -730,6 +731,50 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 311304874}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &700347468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 700347470}
+  - component: {fileID: 700347469}
+  m_Layer: 0
+  m_Name: AnimatorData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &700347469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700347468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 716b08a299031ba49ae1479da0b4f53e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &700347470
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700347468}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.139816, y: -0.85106254, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &792783541
 GameObject:
@@ -1197,6 +1242,8 @@ MonoBehaviour:
   _enemySeeker: {fileID: 1214753787}
   _mana: {fileID: 260026523}
   _stan: {fileID: 2087489643}
+  _animator: {fileID: 1841979308}
+  _animatorData: {fileID: 700347469}
 --- !u!1 &1205193789
 GameObject:
   m_ObjectHideFlags: 0
@@ -2123,6 +2170,7 @@ GameObject:
   - component: {fileID: 1841979306}
   - component: {fileID: 1841979305}
   - component: {fileID: 1841979307}
+  - component: {fileID: 1841979308}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2286,6 +2334,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxValue: 100
   _healthView: {fileID: 888425440}
+--- !u!95 &1841979308
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841979302}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c5e83951bb63cf489bfb217475181ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1852187962
 GameObject:
   m_ObjectHideFlags: 0
@@ -3377,3 +3446,4 @@ SceneRoots:
   - {fileID: 1214753788}
   - {fileID: 983721471}
   - {fileID: 257448266}
+  - {fileID: 700347470}

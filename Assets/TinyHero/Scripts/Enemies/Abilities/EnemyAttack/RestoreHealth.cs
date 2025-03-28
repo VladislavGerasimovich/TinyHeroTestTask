@@ -22,7 +22,6 @@ namespace Enemies.Abilities.EnemyAttack
         {
             if (Random.Range(_minPercent, _maxPercent) < _percentOfChance)
             {
-                Debug.Log("restore");
                 _health.Restore(_count);
 
                 return true;

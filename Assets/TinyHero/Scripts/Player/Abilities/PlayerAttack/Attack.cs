@@ -8,10 +8,12 @@ namespace Player.Abilities.PlayerAttack
     public class Attack : MonoBehaviour
     {
         [SerializeField] private ReloadedButton _hitButton;
-        [SerializeField] private PlayerStats.HitDamage _hitDamage;
+        [SerializeField] private HitDamage _hitDamage;
         [SerializeField] private EnemySeeker _enemySeeker;
         [SerializeField] private Mana _mana;
         [SerializeField] private Stan _stan;
+        [SerializeField] private Animator _animator;
+        [SerializeField] private AnimatorData _animatorData;
 
         private void OnEnable()
         {
@@ -31,8 +33,9 @@ namespace Player.Abilities.PlayerAttack
             {
                 _mana.Reduce(_hitDamage.ManaCost);
                 _hitButton.Reload();
+                _animator.SetTrigger(_animatorData.Attack);
 
-                if((_enemySeeker.CurrentEnemy.Health.CurrentValue - _hitDamage.Value) > 0)
+                if ((_enemySeeker.CurrentEnemy.Health.CurrentValue - _hitDamage.Value) > 0)
                 {
                     _enemySeeker.CurrentEnemy.Health.Reduce(_hitDamage.Value);
                     bool isStanned = _stan.TryPerform();

@@ -20,7 +20,6 @@ public class Stan : MonoBehaviour
     {
         if (Random.Range(_minPercent, _maxPercent) < _percentOfChance)
         {
-            Debug.Log("stan!!!!!!!!!!!!!!");
             return true;
         }
 

@@ -20,7 +20,7 @@ namespace Game.ObjectPools
             return result != null;
         }
 
-        public void Init(PlayerHealth playerHealth)
+        public void Init(PlayerHealth playerHealth, AnimatorData animatorData)
         {
             _pool = new List<GameObject>();
 
@@ -29,7 +29,9 @@ namespace Game.ObjectPools
                 GameObject item = Instantiate(_prefab, _container.transform);
                 item.SetActive(false);
                 Enemy enemy = item.GetComponent<Enemy>();
-                enemy.EnemyAttack.Init(playerHealth);
+                enemy.EnemyAttack.Init(playerHealth, animatorData);
+                enemy.EnemyMove.Init(animatorData);
+                enemy.StanStatus.Init(animatorData);
                 _pool.Add(item);
             }
         }

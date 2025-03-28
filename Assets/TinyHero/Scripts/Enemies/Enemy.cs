@@ -19,6 +19,7 @@ namespace Enemies
         public EnemyHealth Health => _health;
         public Highlight Highlight => _highlight;
         public EnemyAttack EnemyAttack => _attack;
+        public EnemyMove EnemyMove => _movement;
         public StanStatus StanStatus => _stanStatus;
 
         private void Awake()

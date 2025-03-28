@@ -19,9 +19,7 @@ namespace UI.PlayerButtons
 
         public void IncreaseByPercent(float value)
         {
-            Debug.Log(Value + " до");
             _currentValue += _currentValue * value / _percentMultiplier;
-            Debug.Log(Value + " после");
         }
 
         public void ResetToOriginalValue()
